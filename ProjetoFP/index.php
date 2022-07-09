@@ -20,6 +20,7 @@ include "script.php";
     <h2>Nome do Funcionário: <input type="text" name="funcionario"/></h2>
     <h2>Salário: <input type="text" name="salario"/></h2>
       <h3><input type="Submit" value="Calcular pagamento"/></h3>
+      <h3><input type="Submit" value="Verificar folha"/></h3>
 
 <!-- Conteúdo -->
 
