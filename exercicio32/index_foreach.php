@@ -1,5 +1,5 @@
 <?php
-//Foreach: trabalha com um array definido.
+//Foreach: trabalha em loop com um array definido.
 
 $nomes = ["Matheus","João","Pedro","Maria"];
 $a = 10;

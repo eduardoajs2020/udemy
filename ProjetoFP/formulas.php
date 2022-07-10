@@ -1,6 +1,10 @@
 <?php
 
-//Calcula Imposto de Renda
+setlocale(LC_ALL, 'pt_BR');
+//Informa Meses do ano
+
+
+  //Calcula Imposto de Renda
 
 if ($salario < 1903.98)
 {
@@ -23,6 +27,7 @@ else{
 }
 
 //Calcula inss
+
 if ($salario < 1212.00)
 {
   $inss = $salario * 7.5/100;
@@ -44,17 +49,20 @@ else{
 }
 
 //Calcula vale Transporte
+
 $v_transporte = $salario * 6/100;
 
 //Calcula FGTS
+
 $fgts = $salario * 8/100;
 
-//$format_number1 = round($salario, 2);
+$format_number1 = round($salario, 2);
 //$format_inss = round($inss, 2);
 //$format_number3 = round($vls_liquido, 2);
 //$format_number4 = round($v_transporte, 2);
 
 //Calcula valor líquido (insira o parâmetro para provento(+) ou para desconto(-))
+
 $proventos = $salario + $comissao;
 $descontos = $inss + $v_transporte + $imposto_renda;
 

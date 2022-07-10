@@ -19,8 +19,9 @@ include "script.php";
   <h2>CNPJ: <input type="text" name="cnpj"/></h2>
     <h2>Nome do Funcionário: <input type="text" name="funcionario"/></h2>
     <h2>Salário: <input type="text" name="salario"/></h2>
+    <!--<h2>Mês da folha: <input type="text" name="Mês da folha"/></h2> -->
       <h3><input type="Submit" value="Calcular pagamento"/></h3>
-      <h3><input type="Submit" value="Verificar folha"/></h3>
+      
 
 <!-- Conteúdo -->
 

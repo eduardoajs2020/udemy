@@ -1,5 +1,5 @@
 <?php
-//Criando um array com o for
+//Criando um array com o for(função array push)
 
 $arr = [];
 
