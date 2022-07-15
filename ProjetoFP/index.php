@@ -22,7 +22,6 @@ include "script.php";
     <!--<h2>Mês da folha: <input type="text" name="Mês da folha"/></h2> -->
       <h3><input type="Submit" value="Calcular pagamento"/></h3>
       
-
 <!-- Conteúdo -->
 
   <?php
