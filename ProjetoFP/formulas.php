@@ -56,10 +56,6 @@ $v_transporte = $salario * 6/100;
 
 $fgts = $salario * 8/100;
 
-$format_number1 = round($salario, 2);
-//$format_inss = round($inss, 2);
-//$format_number3 = round($vls_liquido, 2);
-//$format_number4 = round($v_transporte, 2);
 
 //Calcula valor líquido (insira o parâmetro para provento(+) ou para desconto(-))
 

@@ -1,4 +1,5 @@
 <?php
+
 $idade1 = 16;
 $idade2 = 18;
 $idade3 = 26;
