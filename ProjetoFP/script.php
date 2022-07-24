@@ -11,6 +11,7 @@ $comissao = 0;
 $horas_trabalhadas = [];
 
 require_once "formulas.php";
+//require_once "testes.php";
 
 
 echo "==========================================================================================================<br>";

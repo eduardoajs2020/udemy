@@ -8,10 +8,10 @@ function lista_string($arr){
   for($i =0; $i < count($arr); $i++){
 
     if($i + 1  == count($arr)){
-      $str = "$arr[$i].";
+      $str = "$str "."$arr[$i].";
     }
       else{
-        $str = "$arr[$i], ";
+        $str = "$str "."$arr[$i], ";
       }
     }
     return $str;
