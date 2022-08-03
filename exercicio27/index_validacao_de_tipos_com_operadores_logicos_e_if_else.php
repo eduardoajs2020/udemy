@@ -13,7 +13,7 @@ if ($c != $d){
   echo "Essa também é verdadeira <br>";
 }
 if($e <= $ $f){
-  echo "Essa é falsa e não vai impprimir <br>";
+  echo "Essa é falsa e não vai imprimir <br>";
 }
 
 ?>
