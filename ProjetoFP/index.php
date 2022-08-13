@@ -70,6 +70,7 @@
 <footer class= "shape">
 
     <?php
+    date_default_timezone_set('America/Sao_Paulo');
 
       $dia = date("d", time());
       $mes = date("M", time());
