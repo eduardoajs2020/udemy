@@ -15,7 +15,7 @@
                       border: 0px solid white;
                       color: #FFF8DC;
                       display: flex;
-                      background-color: #0000FF;
+                      background-color: #0085FF;
                       align-self:flex;
                       font-family: verdana;
                       font-width:bold;
@@ -24,22 +24,22 @@
                       align-self:flex;
                       max-width: flex;
                       border-radius:5px;
-                      background-color: #F0F8FF;
+                      background-color: #87FDCE;
                       display: flex;
                       font-family: verdana;
                       font-size:14;
                       font-width:bold;
                       margin:20px;
-                      border: 1px solid blue;
-                      color: #00008B;
+                      border: 1px solid #43B7BA;
+                      color: #191970;
                       }
                   .shape {
                       shape-outside: circle(50%) margin-box;
-                      border: 1px solid blue;
+                      border: 1px solid GREEN;
                       border-radius:5px;
                       margin: 20px;
-                      color: #00008B;
-                      background-color: #F0F8FF;
+                      color: WHITE;
+                      background-color: #0085FF;
                       display: center;
                       font-family:verdana;
                       font-style:bold;
@@ -51,7 +51,7 @@
 
 </head>
 
-<body bgcolor="#fafade">
+<body bgcolor="#4C787E">
 
   <h1 class= "flex">Calculo da Folha de Pagamento</h1>
 
