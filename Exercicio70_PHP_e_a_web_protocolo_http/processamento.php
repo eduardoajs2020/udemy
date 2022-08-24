@@ -8,4 +8,4 @@ else{
   $idade = "Padrão";
 }
 ?>
-<h1>O seu nome é <?=$nome?> e sua idade é <?=$idade?> anos! <h1/>
+<h1>O seu nome é <?=$nome?> e sua idade é <?=$idade?> anos! </h1>

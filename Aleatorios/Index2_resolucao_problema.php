@@ -8,7 +8,7 @@
                             <li><a href="#" data-category=".Industria">Indústria</a></li>
                             <li><a href="#" data-category=".Publico">Público - Privado</a></li>
                             <li><a href="#" data-category=".Saude">Saúde</a></li>
-                            <li><a href="#" data-category=".Servics">Serviços</a></li>
+                            <li><a href="#" data-category=".Services">Serviços</a></li>
                             <li><a href="#" data-category=".Shopping">Shopping</a></li>
                             <li><a href="#" data-category=".Supermercados">Supermercados</a></li>
                             <li><a href="#" data-category=".Tecnologia">Tecnologia</a></li>

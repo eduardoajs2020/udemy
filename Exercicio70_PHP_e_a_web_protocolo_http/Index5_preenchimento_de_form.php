@@ -1,10 +1,11 @@
 <?php
-// MOC de dados
+// MOCK-UP de dados
 $usuario = [
 'nome' => 'Matheus',
 'idade' => 29,
 'profissao'=> 'Programador'
 ];
+
 if($usuario){
   $nome = $usuario['nome'];
   $idade= $usuario['idade'];
