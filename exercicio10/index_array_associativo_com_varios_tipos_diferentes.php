@@ -5,7 +5,7 @@
 $pessoa=['nome'=> 'Eduardo',
         'idade'=> 43,
         'altura'=> 1.70,
-        'cor'=> 'pardo',];
+        'cor'=> 'pardo'];
 
 echo $pessoa['nome'];
 echo"<br>";
