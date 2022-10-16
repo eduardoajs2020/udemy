@@ -106,8 +106,6 @@ class UserDAO implements UserDAOInterface{
     }
 
 }
-
-
     public function setTokenToSession($token, $redirect = true){
 
         //Salvar token na session

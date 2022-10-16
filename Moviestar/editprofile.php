@@ -13,7 +13,8 @@ $userData = $userDao->verifyToken(true);
 $fullName = $user->getFullName($userData);
 
 if($userData->image == ""){
-    $userData->image = "user.png";
+    
+   $userData->image = "user.png";
 }
 
 ?>
@@ -27,15 +28,15 @@ if($userData->image == ""){
                         <p class="page-description">Altere seus dados no formulário abaixo:</p>
                         <div class="form-group">
                             <label for="name">Nome:</label>
-                            <input type="text" class="form-control" id="name" placeholder="Digite seu nome" value="<?=$userData->name?>">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome" value="<?=$userData->name?>">
                         </div>
                         <div class="form-group">
                             <label for="lastname">Sobrenome:</label>
-                            <input type="text" class="form-control" id="lastname" placeholder="Digite seu sobrenome" value="<?=$userData->lastname?>">
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Digite seu sobrenome" value="<?=$userData->lastname?>">
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail:</label>
-                            <input type="email" readonly class="form-control disabled" id="email" placeholder="Digite seu email" value="<?=$userData->email?>">
+                            <input type="email" readonly class="form-control disabled" id="email" name="email" placeholder="Digite seu email" value="<?=$userData->email?>">
                         </div>
                         <input type="submit" class="btn card-btn" value="Alterar">
                     </div>
