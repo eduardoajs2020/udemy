@@ -74,7 +74,7 @@ else if($type === "login"){
 
         $message->setMessage("Seja bem vindo!", "success", "editprofile.php");
 
-        //Redireciona o susuário, caso não consiga autenticar
+        //Redireciona o usuário, caso não consiga autenticar
 
     }else{
 
