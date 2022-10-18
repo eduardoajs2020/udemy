@@ -84,6 +84,7 @@ $userDao->update($userData);
     // Receber dados do post
     $password = filter_input(INPUT_POST, "password");
     $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+    
 
     // Resgata dados do usuário
     $userData = $userDao->verifyToken();
@@ -98,6 +99,7 @@ $userDao->update($userData);
       $finalPassword = $user->generatePassword($password);
 
       $user->password = $finalPassword;
+
       $user->id = $id;
 
       $userDao->changePassword($user);
