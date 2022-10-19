@@ -38,6 +38,7 @@ $userData = $userDao->verifyToken(true);
                     <option value="Comédia">Comédia</option>
                     <option value="Fantasia/Ficção">Fantasia/Ficção</option>
                     <option value="Romance">Romance</option>
+                    <option value="Musical">Musical</option>
                 </select>
             </div>
             <div class="form-group">
