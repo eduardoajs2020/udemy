@@ -7,7 +7,7 @@ require_once("dao/MovieDAO.php");
 
 $movieDao = new MovieDAO($conn, $BASE_URL);
 
-$latestMovies = $movieDao->getLatestMovies() ;
+$latestMovies = $movieDao->getLatestMovies();
 
 $actionMovies = $movieDao->getMoviesByCategory("Ação");
 
