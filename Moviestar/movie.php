@@ -1,6 +1,4 @@
 <?php 
-
-
 require_once("templates/header.php");
 
 //Verifica se o usuario esta autenticado
@@ -51,6 +49,7 @@ if(!empty($userData)){
 
 //Resgatar as reviews do filme
 
+$alreadyReviewed = false;
 
 ?>
 
@@ -63,24 +62,25 @@ if(!empty($userData)){
                 <span class="pipe"></span>
                 <span><?= $movie->category?></span>
                 <span class="pipe"></span>
-                <span><i class="fas fa-star"> 9</i></span>
+                <span><i class="fas fa-star"></i><?= $movie->rating ?></span>
             </p>
-            <iframe src="<?= $movie->trailer ?>"  width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture " allowfullscreen></iframe>
-            <p><?= $movie->description?></p>
+            <iframe src="<?= $movie->trailer ?>"  width="300" height="150" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p><?= $movie->description ?></p>
         </div>
         <div class="col-md-4">
-            <div class="movie-image-container" style="background-image: url('<?=$BASE_URL?>/img/movies/<?=$movie->image?>');"></div>
+            <div class="movie-image-container" style="background-image: url('<?=$BASE_URL?>/img/movies/<?=$movie->image?>')"></div>
         </div>
         <div class="offset-md-1 col-md-10" id="reviews-container">
             <h3 id="reviews-title">Avaliações:</h3>
             <!--Verifica se habilita a review para o usuário ou não-->
+            <?php if(!empty($userData) && !$userOwnsMovie && !$alreadyReviewed): ?>
             <div class="col-md-12" id="review-form-container">
                 <h4>Envie sua avaliação:</h4>
                 <p class="page-description">Preencha o formulario com a nota e comentario sobre o filme</p>
                 <form action="<?=$BASE_URL?>review_process.php" id="review-form" method="POST">
                     <input type="hidden" name="type" value="create">
                     <input type="hidden" name="movies_id" value="<?= $movie->id ?>">
-                    <div class="forme-group">
+                    <div class="form-group">
                         <label for="rating">Nota do filme:</label>
                         <select name="rating" id="rating" class="form-control">
                             <option value="">Selecione</option>
@@ -99,11 +99,12 @@ if(!empty($userData)){
                     </div>
                     <div class="form-group">
                         <label for="review">Seu comentário:</label>
-                        <textarea name="review" id="review" rows="3" class="form-control" placeholder="O que você achou do filme"></textarea>
+                        <textarea name="review" id="review" rows="3" class="form-control" placeholder="O que você achou do filme?"></textarea>
                     </div>
                     <input type="submit" class="btn card-btn" value="Enviar comentário">
                 </form>
             </div>
+            <?php endif; ?>
             <!--Comentarios-->
             <div class="col-md-12 review">
                 <div class="row">
