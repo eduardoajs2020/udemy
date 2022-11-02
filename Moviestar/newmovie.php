@@ -1,15 +1,14 @@
 <?php 
 
 require_once("templates/header.php");
+
 require_once("models/User.php");
 require_once("dao/UserDAO.php");
 
 //Verifica se o usuário está autenticado
-$user = new User();
+$auth = new UserDAO($conn, $BASE_URL);
 
-$userDao = new UserDAO($conn, $BASE_URL);
-
-$userData = $userDao->verifyToken(true);
+$userData = $auth->verifyToken();
 
 ?>
         <div id="main-container" class="container-fluid">

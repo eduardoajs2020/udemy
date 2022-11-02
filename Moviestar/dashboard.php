@@ -1,18 +1,18 @@
 <?php 
 
 require_once("templates/header.php");
-require_once("models/User.php");
+
 require_once("dao/UserDAO.php");
 require_once("dao/MovieDAO.php");
 
-//Verifica se o usuário está autenticado
-$user = new User();
 
-$userDao = new UserDAO($conn, $BASE_URL);
-
+//Dao dos filmes
 $movieDao = new MovieDAO($conn, $BASE_URL);
 
-$userData = $userDao->verifyToken(true);
+// Verifica o token, se não for o correto redireciona para a home
+$auth = new UserDAO($conn, $BASE_URL);
+
+$userData = $auth->verifyToken();
 
 $userMovies = $movieDao->getMoviesByUserId($userData->id);
 
@@ -22,9 +22,7 @@ $userMovies = $movieDao->getMoviesByUserId($userData->id);
  <h2 class="section-title">Dashboard</h2>
  <p class="section-description">Adicione ou atualize as informações dos filmes que você enviou</p>
  <div class="col-md-12" id="add-movie-container">
-    <a href="<?=$BASE_URL?>newmovie.php" class="btn card-btn">
-    <i class="fas fa-plus"></i>Adicionar filme
-</a>
+    <a href="<?=$BASE_URL?>newmovie.php" class="btn card-btn"><i class="fas fa-plus"></i>Adicionar filme</a>
  </div>
     <div class="col-md-12" id="movies-dashboard">
         <table class="table">
@@ -39,12 +37,12 @@ $userMovies = $movieDao->getMoviesByUserId($userData->id);
                 <tr >
                     <td scope="row"><?=$movie->id?></td>
                     <td><a href="<?=$BASE_URL?>movie.php?id=<?=$movie->id?>" class="table-movie-title"><?=$movie->title?></a></td>
-                    <td><i class="fas fa-star"></i>9</td>
+                    <td><i class="fas fa-star"></i><?=$movie->rating?></td>
                     <td class="actions-column">
                         <a href="<?=$BASE_URL?>editmovie.php?id=<?=$movie->id?>" class="edit-btn">
                             <i class="far fa-edit"></i>Editar
                         </a>
-                        <form action="<?=$BASE_URL?>movie_process.php" method="POST">
+                        <form action="<?=$BASE_URL?>movie_process.php?id=<?= $movie->id ?>" method="POST">
                             <input type="hidden" name="type" value="delete">
                             <input type="hidden" name="id" value="<?=$movie->id?>">
                             <button type="submit" class="delete-btn">

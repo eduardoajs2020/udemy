@@ -7,15 +7,16 @@ require_once("models/Message.php");
 require_once("dao/UserDAO.php");
 require_once("dao/MovieDAO.php");
 
-$message = new Message($BASE_URL);
-$userDao = new UserDAO($conn, $BASE_URL);
-$movieDao = new MovieDAO($conn, $BASE_URL);
-
 //Resgata o tipo de formulario
 $type = filter_input(INPUT_POST,"type");
 
+$message = new Message($BASE_URL);
+$auth = new UserDAO($conn, $BASE_URL);
+
 //Resgata dados do usuário
-$userData = $userDao->verifyToken();
+$userData = $auth->verifyToken();
+
+$movieDao = new MovieDAO($conn, $BASE_URL);
 
 if($type === "create"){
 
@@ -71,7 +72,7 @@ if($type === "create"){
 
         }else{
 
-            $message->setMessage("Tipo inválido de imagem, insira png ou jpg!", "error", "back");
+            $message->setMessage("Tipo inválido de imagem, insira png ou jpg!", "error", "editprofile.php");
         }
         
     }
@@ -81,7 +82,7 @@ if($type === "create"){
 
     }else{
        
-         $message->setMessage("Você precisa adicionar pelo menos: título, descrição e categoria!","error", "back");
+         $message->setMessage("Você precisa adicionar pelo menos: título, descrição e categoria!","error", "newmovie.php");
     }
 
 }elseif($type === "delete"){
@@ -98,12 +99,12 @@ if($type === "create"){
             $movieDao->destroy($movie->id);
 
         }else{
-            $message->setMessage("Informações inválidas!","error", "index.php");
+            $message->setMessage("Informações inválidas!","error", "dashboard.php");
         }
 
     }else{
 
-        $message->setMessage("Informações inválidas!","error", "index.php");
+        $message->setMessage("Informações inválidas!","error", "dashboard.php");
 
     }
 
@@ -117,22 +118,22 @@ if($type === "create"){
     $length = filter_input(INPUT_POST, "length");
     $id = filter_input(INPUT_POST, "id");
 
-    $movieData = $movieDao->findById($id);
+    $movieDb = $movieDao->findById($id);
 
-    if($movieData){
+    if($movieDb){
 
         //verificar se o filme do usuário
-        if($movieData->users_id === $userData->id){
+        if($movieDb->users_id === $userData->id){
 
             //Validação mínima de dados
     if(!empty($title) && !empty($description) && (!empty($category))){
             
            //Edição do filme
-           $movieData->title=$title;
-           $movieData->description=$description;
-           $movieData->trailer=$trailer;
-           $movieData->category=$category;
-           $movieData->length=$length;
+           $movieDb->title=$title;
+           $movieDb->description=$description;
+           $movieDb->trailer=$trailer;
+           $movieDb->category=$category;
+           $movieDb->length=$length;
 
         if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])){
 
@@ -161,32 +162,32 @@ if($type === "create"){
 
             imagejpeg($imageFile, "./img/movies/".$imageName, 100);
 
-            $movieData->image = $imageName;
+            $movieDb->image = $imageName;
 
         }else{
 
-            $message->setMessage("Tipo inválido de imagem, insira png ou jpg!", "error", "back");
+            $message->setMessage("Tipo inválido de imagem, insira png ou jpg!", "error", "dashboard.php");
         }
         
     }
 
-    $movieDao->update($movieData);
+    $movieDao->update($movieDb);
 
     } else{
 
-        $message->setMessage("Você precisa informar pelo menos titulo, descrição e categoria!","error", "back");
+        $message->setMessage("Você precisa informar pelo menos titulo, descrição e categoria!","error", "dashboard.php");
 
     }          
 
 }else{
 
-    $message->setMessage("Informações inválidas!","error", "index.php");
+    $message->setMessage("Informações inválidas!","error", "dashboard.php");
 
 }
 
 }else{
 
-    $message->setMessage("Informações inválidas!","error", "index.php");
+    $message->setMessage("Informações inválidas!","error", "dashboard.php");
 
  }
 }

@@ -9,20 +9,16 @@ require_once("dao/MovieDAO.php");
 $user = new User();
 
 $userDao = new UserDAO($conn, $BASE_URL);
-$movieDao = new MovieDAO($conn, $BASE_URL);
+
 
 //Receber id do usuário
 $id = filter_input(INPUT_GET, "id");
 
 if(empty($id)){
-
-    if(!empty($userData)){
-
+    
         $id = $userData->id;
-    }else{
 
-        $message->setMessage("Usuário não encontrado!", "error", "index.php");
-    }
+    
 
 }else{
 
@@ -30,20 +26,24 @@ if(empty($id)){
 
     //Se não encontrar usuário
 
-    if(!$userData){
+    if(!$user){
+
         $message->setMessage("Usuário não encontrado!", "error", "index.php");
     }
 
-    $message->setMessage("Usuário não encontrado!", "error", "index.php");
+    
 }
 
 $fullName=$user->getFullName($userData);
 
-if($userData->image == ""){
+//Verifica se tem imagem
+
+if(empty($userData->image)){
     
    $userData->image = "user.png";
 }
 
+$movieDao = new MovieDAO($conn, $BASE_URL);
 //Filmes que o usuario adicionou
 
 $userMovies = $movieDao->getMoviesByUserId($id);
