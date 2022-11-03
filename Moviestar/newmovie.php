@@ -15,7 +15,7 @@ $userData = $auth->verifyToken();
            <div class="offset-md-4 col-md-4 new-movie-container">
             <h1 class="page-title">Adicionar Filme</h1>
             <p class="page-description">Adicione sua critica e compartilhe com o mundo!</p>
-            <form action="<?=$BASE_URL?>movie_process.php" id="add-movie-form" method="POST" enctype="multipart/form-data">
+            <form id="add-movie-form" action="<?=$BASE_URL?>movie_process.php"  method="POST" enctype="multipart/form-data">
             <input type="hidden" name="type" value="create">
             <div class="form-group">
                 <label for="title">Título:</label>
@@ -47,7 +47,7 @@ $userData = $auth->verifyToken();
             </div>
             <div class="form-group">
                 <label for="description">Descrição:</label>
-                <textarea name="description" id="description" rows="5" class="form-control" placeholder="Descreva o filme...">
+                <textarea class="form-control" name="description" id="description" rows="5"  placeholder="Descreva o filme...">
                 </textarea>
             </div>
             <input type="submit" class="btn card-btn" value="Adicionar filme">

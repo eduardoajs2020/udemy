@@ -20,7 +20,7 @@ if($type === "register"){
     
     $name = filter_input(INPUT_POST, "name");
     $lastname = filter_input(INPUT_POST, "lastname");
-    $email = filter_input(INPUT_POST, "email");
+    $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
     $password = filter_input(INPUT_POST, "password");
     $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
 
@@ -36,7 +36,7 @@ if($userDao->findByEmail($email) === false){
     $user = new User();
 
    //Criação de token e senha
-   $userToken = $user-> generateToken();
+   $userToken = $user->generateToken();
    $finalPassword = $user->generatePassword($password);
 
    $user->name =$name;
@@ -66,7 +66,7 @@ else {
 }
 else if($type === "login"){
    
-    $email = filter_input(INPUT_POST, "email");
+    $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
     $password = filter_input(INPUT_POST, "password");
 
     //Tenta autenticar usuário

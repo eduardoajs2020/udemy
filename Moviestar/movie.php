@@ -64,7 +64,7 @@ $alreadyReviewed = false;
                 <span class="pipe"></span>
                 <span><i class="fas fa-star"></i><?= $movie->rating ?></span>
             </p>
-            <iframe src="<?= $movie->trailer ?>"  width="300" height="150" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="<?= $movie->trailer ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <p><?= $movie->description ?></p>
         </div>
         <div class="col-md-4">
