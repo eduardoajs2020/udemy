@@ -4,6 +4,7 @@ require_once("templates/header.php");
 //Verifica se o usuario esta autenticado
 require_once("models/Movie.php");
 require_once("dao/MovieDAO.php");
+require_once("dao/ReviewDAO.php");
 
 //Pegar o id do filme
 $id = filter_input(INPUT_GET, "id");
@@ -11,6 +12,8 @@ $id = filter_input(INPUT_GET, "id");
 $movie;
 
 $movieDao = new MovieDAO($conn, $BASE_URL);
+
+$reviewDao = new ReviewDAO($conn, $BASE_URL);
 
 if(empty($id)){
 
@@ -45,11 +48,16 @@ if(!empty($userData)){
 
         $userOwnsMovie = true;
     }
+
+    //Resgatar as reviews do filme
+
+$alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
 }
 
 //Resgatar as reviews do filme
+$movieReviews = $reviewDao->getMoviesReview($id);
 
-$alreadyReviewed = false;
+
 
 ?>
 
@@ -106,23 +114,12 @@ $alreadyReviewed = false;
             </div>
             <?php endif; ?>
             <!--Comentarios-->
-            <div class="col-md-12 review">
-                <div class="row">
-                    <div class="col-md-1">
-                        <div class="profile-image-container review-image" style="background-image:url('<?= $BASE_URL?>img/users/user.png');"></div>
-                    </div>
-                    <div class="col-md-9 autor-details-container">
-                        <h4 class="author-name">
-                            <a href="#">Matheus teste</a>
-                        </h4>
-                        <p><i class="fas fa-star"> 9</i></p>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="coment-title">Comentario:</p>
-                        <p>Este é o comentario do usuário</p>
-                    </div>
-                </div>
-            </div>
+            <?php foreach($movieReviews as $review): ?>
+                   <?php require("templates/user_review.php");?>
+                <?php endforeach;?>
+                <?php if(count($movieReviews) == 0): ?>
+                    <p class="empty-list">Não há comentários para este filme ainda...</p>
+                <?php endif;?>
         </div>
     </div>
 </div>
