@@ -62,7 +62,7 @@ if($type === "create"){
             }
 
             //Gerando o nome da imagem
-            $movie = new Movie();
+            //$movie = new Movie();
 
             $imageName = $movie->imageGenerateName();
 
@@ -118,12 +118,12 @@ if($type === "create"){
     $length = filter_input(INPUT_POST, "length");
     $id = filter_input(INPUT_POST, "id");
 
-    $movieDb = $movieDao->findById($id);
+    $movieData = $movieDao->findById($id);
 
-    if($movieDb){
+    if($movieData){
 
         //verificar se o filme do usuário
-        if($movieDb->users_id === $userData->id){
+        if($movieData->users_id === $userData->id){
 
             //Validação mínima de dados
     if(!empty($title) && !empty($description) && (!empty($category))){
@@ -162,7 +162,7 @@ if($type === "create"){
 
             imagejpeg($imageFile, "./img/movies/".$imageName, 100);
 
-            $movieDb->image = $imageName;
+            $movieData->image = $imageName;
 
         }else{
 
@@ -171,7 +171,7 @@ if($type === "create"){
         
     }
 
-    $movieDao->update($movieDb);
+    $movieDao->update($movieData);
 
     } else{
 
